@@ -1,0 +1,36 @@
+import random
+
+totalAttempts = 0
+
+def game():
+  global totalAttempts  # Specify that you want to use the global variable within the function
+  attempts = 0
+  while True:
+    number = random.randint(1, 100)
+    guess = int(input("Pick a number between 1 and 100: "))
+    if guess > number:
+      print("Too high")
+      attempts += 1
+    elif guess < number:
+      print("Too low")
+      attempts += 1
+    else:
+      print("Just right!")
+      print(f"{attempts} attempts this round")
+      totalAttempts += attempts  # Update the totalAttempts variable
+      return attempts
+
+while True:
+  print("1. Play game")
+  print("2. Show total attempts")
+  print("3. Quit")
+  menu = int(input("Enter your choice: "))
+
+  if menu == 1:
+    game()
+  elif menu == 2:
+    print(f"You've had {totalAttempts} attempts")
+  elif menu == 3:
+    break
+  else:
+    print("Invalid choice")
